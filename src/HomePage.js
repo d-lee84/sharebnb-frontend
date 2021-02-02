@@ -1,9 +1,4 @@
-// import Search from './Search';
-// import HomePage from './HomePage';
-// import Listings from './Listings';
-// import Messages from './Messages';
-// import NotFound from './NotFound';
-
+import {Jumbotron} from 'react-bootstrap';
 /**  HomePage Component
  * Props:
  * State:
@@ -12,10 +7,12 @@
  */
 function HomePage(){
   return(
-    <div>
-      <h1> Welcome to ShareBnB!</h1>
-      <p> (Hey AirBnb, please hire us) </p>
-    </div>
+    <Jumbotron>
+     <h1> Welcome to ShareBnB!</h1>
+    <p>
+      (Hey AirBnb, please hire us)
+    </p>
+    </Jumbotron>
   );
 }
 export default HomePage;

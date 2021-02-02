@@ -1,4 +1,5 @@
 // import Search from './Search';
+import { ListGroup } from 'react-bootstrap';
 import Listing from './Listing';
 
 // import Messages from './Messages';
@@ -14,9 +15,9 @@ function Listings(){
   return(
     <div>
       <h2>Book a covid-safe outdoor location!</h2>
-      <ul>
+      <ListGroup>
         <Listing/>
-      </ul>
+      </ListGroup>
     </div>
   );
 }
