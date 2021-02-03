@@ -53,8 +53,8 @@ function AddListingForm({ addListing }) {
   function handleChange(evt) {
     const { name, value } = evt.target;
     if (name === "photo") {
-      setFormData(fd => ({ 
-        ...fd, 
+      setFormData(fd => ({
+        ...fd,
         photoFile: evt.target.files[0],
         photo: value
       }));
@@ -68,13 +68,6 @@ function AddListingForm({ addListing }) {
   return (
     <div className="w-50 mx-auto p-3">
       <h2>Add a Listing:</h2>
-      {/* name: "",
-          price: "",
-          zipcode: "",
-          capacity: "",
-          description: "",
-          amenities:"",
-          photoUrl:"" */}
       <Form onSubmit={handleSubmit} encType="multipart/form-data">
         <Form.Label htmlFor="AddListingForm-name">
           Name:
