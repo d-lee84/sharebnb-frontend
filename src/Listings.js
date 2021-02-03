@@ -49,6 +49,7 @@ function Listings(){
             price={l.price}
             capacity={l.capacity}
             zipcode={l.zipcode}
+            photoUrl={l.photoUrl}
             />
           ))
         }
