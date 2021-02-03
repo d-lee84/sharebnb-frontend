@@ -42,6 +42,10 @@ function AddListingForm({ addListing }) {
     evt.preventDefault();
     let result = await addListing(formData);
     history.push("/listings");
+    // new FormData object
+    // content-type: multipart/formdata
+    //
+
   }
 
   /** Update form data field */
@@ -51,6 +55,8 @@ function AddListingForm({ addListing }) {
     console.log("value", value);
     setFormData(l => ({ ...l, [name]: value }));
   }
+
+
 
   return (
     <div className="w-50 mx-auto p-3">
