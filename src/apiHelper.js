@@ -56,8 +56,8 @@ class ShareBnBApi {
   }
   /** Get a filtered list of listings */
 
-  static async addListing(formData) {
-    let res = await this.request(`listings`, formData, "post");
+  static async addListing(data) {
+    let res = await this.request(`listings`, data, "post");
     return res.listings;
   }
 

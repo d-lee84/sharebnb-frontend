@@ -81,8 +81,8 @@ function AddListingForm({ addListing }) {
         <Form.Control
           className="mb-2 mr-sm-2"
           id="AddListingForm-price"
-          placeholder="price"
-          name="200"
+          placeholder="200"
+          name="price"
           value={formData.price}
           onChange={handleChange}
           />

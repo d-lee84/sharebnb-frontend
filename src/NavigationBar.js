@@ -18,7 +18,9 @@ function NavigationBar({currentUser}){
           <Nav.Link as={NavLink} to="/messages"> Messages </Nav.Link>
         </Nav>
         { currentUser
-          ? "" // TODO: Authenticated only routes go here!
+          ? <Nav className="ml-auto">
+              <Nav.Link as={NavLink} to="/listings/add"> New Listing </Nav.Link>
+            </Nav>
           : <Nav className="ml-auto">
               <Nav.Link as={NavLink} to="/login"> Login </Nav.Link>
               <Nav.Link as={NavLink} to="/register"> Register </Nav.Link>

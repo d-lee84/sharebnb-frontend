@@ -47,6 +47,7 @@ function App() {
     setToken(token);
   }
   async function addListing(formData) {
+    formData['hostId'] = currentUser.id;
     try {
       let res = await ShareBnBApi.addListing(formData);
     } catch (err) {
