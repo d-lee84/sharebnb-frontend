@@ -30,10 +30,16 @@ function Listings(){
     if (isLoading) getAllListings();
   }, [isLoading]);
 
+  async function fetchListingsByTerm(searchTerm){
+    let listings = await ShareBnBApi.getListingsByTerm(searchTerm);
+    setListings(listings);
+    setIsLoading(false);
+  }
+
   return(
     <div>
       <h2>Book a covid-safe outdoor location!</h2>
-      <SearchForm />
+      <SearchForm searchListings={fetchListingsByTerm}/>
       <ListGroup>
         {listings.map(l => (
           <Listing

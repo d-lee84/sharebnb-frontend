@@ -7,15 +7,16 @@ import {useState} from "react";
  *
  * App -> Listings -> SearchForm
  */
-function SearchForm(){
+function SearchForm({searchListings}){
   const [searchTerm, setSearchTerm] = useState("");
 
   /** Tell parent to filter */
   function handleSubmit(evt) {
     // take care of accidentally trying to search for just spaces
     evt.preventDefault();
-    // searchFor(searchTerm.trim() || undefined);
-    setSearchTerm(searchTerm.trim());
+    searchListings(searchTerm.trim());
+    setSearchTerm("");
+
   }
 
   /** Update form fields */
