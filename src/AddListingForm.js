@@ -22,7 +22,7 @@ function AddListingForm({ addListing }) {
     capacity: "",
     description: "",
     amenities:"",
-    photoUrl:""
+    photo:""
   });
   const [formErrors, setFormErrors] = useState([]);
 
@@ -47,6 +47,8 @@ function AddListingForm({ addListing }) {
   /** Update form data field */
   function handleChange(evt) {
     const { name, value } = evt.target;
+    console.log("name", name);
+    console.log("value", value);
     setFormData(l => ({ ...l, [name]: value }));
   }
 
@@ -127,6 +129,7 @@ function AddListingForm({ addListing }) {
           id="AddListingForm-photo"
           name="photo"
           type="file"
+          accept="image/*"
           placeholder="photo"
           value={formData.photo}
           onChange={handleChange}
