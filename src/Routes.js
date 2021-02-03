@@ -4,6 +4,7 @@ import HomePage from './HomePage';
 import Listings from './Listings';
 import Messages from './Messages';
 import NotFound from './NotFound';
+import LoginForm from './LoginForm';
 
 /**  Routes Component
  * Props:
@@ -16,6 +17,12 @@ function Routes(){
     <Switch>
       <Route exact path="/">
         <HomePage />
+      </Route>
+      <Route exact path="/login">
+        <LoginForm />
+      </Route>
+      <Route exact path="/register">
+        <RegisterForm />
       </Route>
       <Route exact path="/listings">
         <Listings />
