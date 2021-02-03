@@ -37,7 +37,6 @@ function App() {
     setToken(token);
   }
   async function registerNewUser(formData) {
-    console.log("entered into registerNewUser fn");
     let token;
     try {
       token = await ShareBnBApi.register(formData);
@@ -47,12 +46,20 @@ function App() {
     }
     setToken(token);
   }
+  async function addListing(formData) {
+    try {
+      let res = await ShareBnBApi.addListing(formData);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <div className="App">
       <BrowserRouter>
         <NavigationBar currentUser={currentUser}/>
         <Routes
+          addListing={addListing}
           currentUser={currentUser}
           loginUser={loginUser}
           registerNewUser={registerNewUser} />

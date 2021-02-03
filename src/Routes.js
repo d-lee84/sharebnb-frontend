@@ -6,6 +6,7 @@ import Messages from './Messages';
 import NotFound from './NotFound';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import AddListingForm from './AddListingForm';
 
 /**  Routes Component
  * Props:
@@ -13,7 +14,7 @@ import RegisterForm from './RegisterForm';
  *
  * App -> Routes
  */
-function Routes({currentUser, loginUser, registerNewUser}){
+function Routes({currentUser, loginUser, registerNewUser, addListing}){
   return(
     <Switch>
       <Route exact path="/">
@@ -24,6 +25,9 @@ function Routes({currentUser, loginUser, registerNewUser}){
       </Route>
       <Route exact path="/register">
         <RegisterForm registerNewUser={registerNewUser} />
+      </Route>
+      <Route exact path="/listings/add">
+        <AddListingForm addListing={addListing} />
       </Route>
       <Route exact path="/listings">
         <Listings />

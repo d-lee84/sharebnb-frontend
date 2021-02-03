@@ -54,6 +54,12 @@ class ShareBnBApi {
     let res = await this.request(`listings/search?term=${searchTerm}`);
     return res.listings;
   }
+  /** Get a filtered list of listings */
+
+  static async addListing(formData) {
+    let res = await this.request(`listings`, formData, "post");
+    return res.listings;
+  }
 
 
   /** Get token for login from username, password. */
