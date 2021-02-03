@@ -57,8 +57,28 @@ class ShareBnBApi {
   /** Get a filtered list of listings */
 
   static async addListing(data) {
-    let res = await this.request(`listings`, data, "post");
-    return res.listings;
+
+    let formData = new FormData();
+
+    console.log("data inside apiHelper", data);
+
+    formData.append("photo", data.photoFile);
+
+    delete data.photo;
+    delete data.photoFile;
+
+    for(let key in data) {
+      formData.append(key, data[key]);
+    }
+
+    let res = await axios.post(`${BASE_URL}/listings`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          "Authorization": `Bearer ${ShareBnBApi.token}`
+        }
+    });
+
+    return res.listing;
   }
 
 

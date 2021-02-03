@@ -22,7 +22,8 @@ function AddListingForm({ addListing }) {
     capacity: "",
     description: "",
     amenities:"",
-    photo:""
+    photo:"",
+    photoFile:null,
   });
   const [formErrors, setFormErrors] = useState([]);
 
@@ -51,9 +52,15 @@ function AddListingForm({ addListing }) {
   /** Update form data field */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    console.log("name", name);
-    console.log("value", value);
-    setFormData(l => ({ ...l, [name]: value }));
+    if (name === "photo") {
+      setFormData(fd => ({ 
+        ...fd, 
+        photoFile: evt.target.files[0],
+        photo: value
+      }));
+    } else {
+      setFormData(fd => ({ ...fd, [name]: value }));
+    }
   }
 
 
@@ -68,7 +75,7 @@ function AddListingForm({ addListing }) {
           description: "",
           amenities:"",
           photoUrl:"" */}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} encType="multipart/form-data">
         <Form.Label htmlFor="AddListingForm-name">
           Name:
         </Form.Label>
