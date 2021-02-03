@@ -1,19 +1,19 @@
 import React, { useState } from "react";
+import { Form,Button } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
-import {Form,Button} from 'react-bootstrap';
 
-/** Register form.
+/** Add Listing form.
  *
  * Shows form and manages update to state on changes.
  * On submission:
- * - calls Register function prop
- * - redirects to / route
+ * - calls Add Listing function prop
+ * - redirects to /listing route
  *
- * Routes -> RegisterForm -> Alert
+ * Routes -> AddListingForm -> Alert
  * Routed as /Register
  */
 
-function RegisterForm({ registerNewUser }) {
+function AddListingForm({ addListing }) {
   const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
@@ -25,7 +25,7 @@ function RegisterForm({ registerNewUser }) {
   const [formErrors, setFormErrors] = useState([]);
 
   console.debug(
-      "RegisterForm",
+      "AddListingForm",
       "Register=", typeof registerNewUser,
       "formData=", formData,
       "formErrors", formErrors,
@@ -33,7 +33,7 @@ function RegisterForm({ registerNewUser }) {
 
   /** Handle form submit:
    *
-   * Calls registerNewUser func prop and, if successful, redirect to /companies.
+   * Calls registerNewUser func prop and, if successful, redirect to /listings.
    */
 
   async function handleSubmit(evt) {
@@ -53,24 +53,24 @@ function RegisterForm({ registerNewUser }) {
       <h2>Register!</h2>
 
       <Form onSubmit={handleSubmit}>
-        <Form.Label htmlFor="RegisterForm-username">
+        <Form.Label htmlFor="AddListingForm-username">
           Username
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
-          id="RegisterForm-username"
+          id="AddListingForm-username"
           name="username"
           placeholder="Username"
           value={formData.username}
           onChange={handleChange}
           />
 
-        <Form.Label htmlFor="RegisterForm-password">
+        <Form.Label htmlFor="AddListingForm-password">
           Password
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
-          id="RegisterForm-password"
+          id="AddListingForm-password"
           placeholder="Password"
           type="password"
           name="password"
@@ -78,35 +78,35 @@ function RegisterForm({ registerNewUser }) {
           onChange={handleChange}
           />
 
-        <Form.Label htmlFor="RegisterForm-firstName">
+        <Form.Label htmlFor="AddListingForm-firstName">
           First Name
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
-          id="RegisterForm-firstName"
+          id="AddListingForm-firstName"
           name="firstName"
           placeholder="First Name"
           value={formData.firstName}
           onChange={handleChange}
           />
-        <Form.Label htmlFor="RegisterForm-lastName">
+        <Form.Label htmlFor="AddListingForm-lastName">
           Last Name
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
-          id="RegisterForm-LastName"
+          id="AddListingForm-LastName"
           name="lastName"
           placeholder="Last Name"
           value={formData.lastName}
           onChange={handleChange}
           />
 
-        <Form.Label htmlFor="RegisterForm-email">
+        <Form.Label htmlFor="AddListingForm-email">
           Email
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
-          id="RegisterForm-email"
+          id="AddListingForm-email"
           name="email"
           placeholder="Email"
           value={formData.email}
@@ -121,4 +121,4 @@ function RegisterForm({ registerNewUser }) {
 
   );
 }
-export default RegisterForm;
+export default AddListingForm;

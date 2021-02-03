@@ -27,10 +27,20 @@ function App() {
 
 
   async function loginUser(formData) {
-    console.log("entered into loginUser fn");
-    let token; 
+    let token;
     try {
       token = await ShareBnBApi.login(formData);
+      console.log("token", token);
+    } catch (err) {
+      console.error(err);
+    }
+    setToken(token);
+  }
+  async function registerNewUser(formData) {
+    console.log("entered into registerNewUser fn");
+    let token;
+    try {
+      token = await ShareBnBApi.register(formData);
       console.log("token", token);
     } catch (err) {
       console.error(err);
@@ -41,8 +51,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <NavigationBar/>
-        <Routes loginUser={loginUser} />
+        <NavigationBar currentUser={currentUser}/>
+        <Routes
+          currentUser={currentUser}
+          loginUser={loginUser}
+          registerNewUser={registerNewUser} />
       </BrowserRouter>
     </div>
   );

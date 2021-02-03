@@ -13,7 +13,7 @@ import RegisterForm from './RegisterForm';
  *
  * App -> Routes
  */
-function Routes({loginUser}){
+function Routes({currentUser, loginUser, registerNewUser}){
   return(
     <Switch>
       <Route exact path="/">
@@ -23,7 +23,7 @@ function Routes({loginUser}){
         <LoginForm loginUser={loginUser} />
       </Route>
       <Route exact path="/register">
-        <RegisterForm />
+        <RegisterForm registerNewUser={registerNewUser} />
       </Route>
       <Route exact path="/listings">
         <Listings />
