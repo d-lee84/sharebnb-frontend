@@ -2,7 +2,7 @@
 import { ListGroup } from 'react-bootstrap';
 import {useState, useEffect} from "react";
 import Listing from './Listing';
-import ShareBnBApi from "./api/api";
+import ShareBnBApi from "./apiHelper";
 import SearchForm from './SearchForm';
 // import { Link } from 'react-router-dom';
 

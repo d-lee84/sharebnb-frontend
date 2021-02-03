@@ -63,9 +63,9 @@ class ShareBnBApi {
     return res.token;
   }
 
-  /** Signup for site. */
+  /** Register for site. */
 
-  static async signup(data) {
+  static async register(data) {
     let res = await this.request(`auth/register`, data, "post");
     return res.token;
   }

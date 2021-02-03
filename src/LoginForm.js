@@ -13,7 +13,7 @@ import {Form,Button} from 'react-bootstrap';
  * Routed as /login
  */
 
-function LoginForm({ login }) {
+function LoginForm({ loginUser }) {
   const history = useHistory();
   const [formData, setFormData] = useState({
     username: "",
@@ -23,7 +23,7 @@ function LoginForm({ login }) {
 
   console.debug(
       "LoginForm",
-      "login=", typeof login,
+      "login=", typeof loginUser,
       "formData=", formData,
       "formErrors", formErrors,
   );
@@ -35,12 +35,8 @@ function LoginForm({ login }) {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
-    let result = await login(formData);
-    if (result.success) {
-      history.push("/companies");
-    } else {
-      setFormErrors(result.errors);
-    }
+    let result = await loginUser(formData);
+    history.push("/");
   }
 
   /** Update form data field */
@@ -50,11 +46,11 @@ function LoginForm({ login }) {
   }
 
   return (
-    <div>
+    <div className="w-50 mx-auto p-3">
       <h2>Login!</h2>
 
-      <Form inline onSubmit={handleSubmit}>
-        <Form.Label htmlFor="LoginForm-username" srOnly>
+      <Form onSubmit={handleSubmit}>
+        <Form.Label htmlFor="LoginForm-username">
           Username
         </Form.Label>
         <Form.Control
@@ -65,13 +61,14 @@ function LoginForm({ login }) {
           value={formData.username}
           onChange={handleChange}
           />
-        <Form.Label htmlFor="LoginForm-password" srOnly>
+        <Form.Label htmlFor="LoginForm-password">
           Password
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
           id="LoginForm-password"
           placeholder="Password"
+          type="password"
           name="password"
           value={formData.password}
           onChange={handleChange}

@@ -53,11 +53,11 @@ function RegisterForm({ registerNewUser }) {
   }
 
   return (
-    <div>
+    <div className="w-50 mx-auto p-3">
       <h2>Register!</h2>
 
-      <Form inline onSubmit={handleSubmit}>
-        <Form.Label htmlFor="RegisterForm-username" srOnly>
+      <Form onSubmit={handleSubmit}>
+        <Form.Label htmlFor="RegisterForm-username">
           Username
         </Form.Label>
         <Form.Control
@@ -69,30 +69,31 @@ function RegisterForm({ registerNewUser }) {
           onChange={handleChange}
           />
 
-        <Form.Label htmlFor="RegisterForm-password" srOnly>
+        <Form.Label htmlFor="RegisterForm-password">
           Password
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
           id="RegisterForm-password"
           placeholder="Password"
+          type="password"
           name="password"
           value={formData.password}
           onChange={handleChange}
           />
 
-        <Form.Label htmlFor="RegisterForm-firstName" srOnly>
+        <Form.Label htmlFor="RegisterForm-firstName">
           First Name
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
           id="RegisterForm-firstName"
           name="firstName"
-          placeholder="firstName"
+          placeholder="First Name"
           value={formData.firstName}
           onChange={handleChange}
           />
-        <Form.Label htmlFor="RegisterForm-lastName" srOnly>
+        <Form.Label htmlFor="RegisterForm-lastName">
           Last Name
         </Form.Label>
         <Form.Control
@@ -104,8 +105,8 @@ function RegisterForm({ registerNewUser }) {
           onChange={handleChange}
           />
 
-        <Form.Label htmlFor="RegisterForm-email" srOnly>
-          email
+        <Form.Label htmlFor="RegisterForm-email">
+          Email
         </Form.Label>
         <Form.Control
           className="mb-2 mr-sm-2"
