@@ -1,5 +1,6 @@
 .Listing-image {
-    height: 12rem;
+    height: 16rem;
+    object-fit: cover;
 }
 
 .Listing-image-wrapper {

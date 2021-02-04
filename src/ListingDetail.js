@@ -1,8 +1,8 @@
-
 import { useEffect, useState } from 'react';
 import {Jumbotron, Badge} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
 import ShareBnBApi from './apiHelper';
+import './ListingDetail.css'
 
 /**  Listing Component
  * Props: name, description, price, zipcode, capacity, photoUrl
@@ -30,12 +30,12 @@ function ListingDetail(){
   return(
       <Jumbotron>
         <h1>{listing.name}</h1>
-        <img src={listing.photoUrl} alt={listing.name} />
+        <img className="ListingDetail-image" src={listing.photoUrl} alt={listing.name} />
         <p>Capacity: {listing.capacity}</p>
         <p>Price: ${listing.price} per night</p>
         <p>Located in Zipcode: {listing.zipcode}</p>
         <p>
-          Amenities: 
+          Amenities:
           <Badge variant="info">{listing.amenities}</Badge>
         </p>
         <p>
