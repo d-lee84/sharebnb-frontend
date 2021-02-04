@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import {Form,Button} from 'react-bootstrap';
+import {Form,Button,InputGroup} from 'react-bootstrap';
 
 /** Login form.
  *
@@ -47,33 +47,43 @@ function LoginForm({ loginUser }) {
 
   return (
     <div className="w-50 mx-auto p-3">
-      <h2>Login!</h2>
+      <h2 className="m-3">Login!</h2>
 
       <Form onSubmit={handleSubmit}>
-        <Form.Label htmlFor="LoginForm-username">
-          Username
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="LoginForm-username"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          />
-        <Form.Label htmlFor="LoginForm-password">
-          Password
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="LoginForm-password"
-          placeholder="Password"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          />
-        <Button type="submit" className="mb-2">
+        <InputGroup size="lg" className="m-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Username
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <Form.Control
+            className=""
+            id="LoginForm-username"
+            name="username"
+            placeholder="ex: worldTravelr"
+            value={formData.username}
+            onChange={handleChange}
+            />
+        </InputGroup>
+
+        <InputGroup size="lg" className="m-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Password
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+          <Form.Control
+            className=""
+            id="LoginForm-password"
+            placeholder="Please don't type 'password'"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            />
+        </InputGroup>
+        
+        <Button type="submit" className="m-3 btn-block btn-lg">
           Submit
         </Button>
       </Form>
