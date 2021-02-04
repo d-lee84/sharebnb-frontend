@@ -39,21 +39,21 @@ function Listings(){
   return(
     <div>
       <h2>Book a covid-safe outdoor location!</h2>
-      <SearchForm searchListings={fetchListingsByTerm}/>
-      <ListGroup>
+      <SearchForm searchListings={fetchListingsByTerm} />
+      <div className="d-flex flex-wrap">
         {listings.map(l => (
           <Listing
-            key={l.id}
-            id={l.id}
-            name={l.name}
-            price={l.price}
-            capacity={l.capacity}
-            zipcode={l.zipcode}
-            photoUrl={l.photoUrl}
-            />
+          key={l.id}
+          id={l.id}
+          name={l.name}
+          price={l.price}
+          capacity={l.capacity}
+          zipcode={l.zipcode}
+          photoUrl={l.photoUrl}
+          />
           ))
         }
-      </ListGroup>
+      </div>
     </div>
   );
 }

@@ -24,6 +24,7 @@ function AddListingForm({ addListing }) {
     amenities:"",
     photo:"",
     photoFile:null,
+    description: ""
   });
   const [formErrors, setFormErrors] = useState([]);
 
@@ -125,6 +126,18 @@ function AddListingForm({ addListing }) {
           name="amenities"
           placeholder="amenities"
           value={formData.amenities}
+          onChange={handleChange}
+          />
+        <Form.Label htmlFor="AddListingForm-description">
+          Description:
+        </Form.Label>
+        <Form.Control
+          as="textarea"
+          className="mb-2 mr-sm-2"
+          id="AddListingForm-description"
+          name="description"
+          placeholder="description"
+          value={formData.description}
           onChange={handleChange}
           />
         <Form.Label htmlFor="AddListingForm-photo">
