@@ -30,7 +30,7 @@ function ListingDetail(){
   return(
       <Jumbotron>
         <h1>{listing.name}</h1>
-        <img className="ListingDetail-image" src={listing.photoUrl} alt={listing.name} />
+        <img className="ListingDetail-image" src={listing.photoUrl || "/random.jpeg"} alt={listing.name} />
         <p>Capacity: {listing.capacity}</p>
         <p>Price: ${listing.price} per night</p>
         <p>Located in Zipcode: {listing.zipcode}</p>
