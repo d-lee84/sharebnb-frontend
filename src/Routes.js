@@ -6,6 +6,7 @@ import Messages from './Messages';
 import NotFound from './NotFound';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
+import ListingDetail from './ListingDetail';
 import AddListingForm from './AddListingForm';
 
 /**  Routes Component
@@ -28,6 +29,9 @@ function Routes({currentUser, loginUser, registerNewUser, addListing}){
       </Route>
       <Route exact path="/listings/add">
         <AddListingForm addListing={addListing} />
+      </Route>
+      <Route exact path="/listings/:id">
+        <ListingDetail />
       </Route>
       <Route exact path="/listings">
         <Listings />

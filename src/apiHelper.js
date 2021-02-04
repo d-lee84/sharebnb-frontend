@@ -48,6 +48,12 @@ class ShareBnBApi {
     return res.listings;
   }
 
+  /** Get listing by id*/
+  static async getListingById(id) {
+    let res = await this.request(`listings/${id}`);
+    return res.listing;
+  }
+
   /** Get a filtered list of listings */
 
   static async getListingsByTerm(searchTerm) {
