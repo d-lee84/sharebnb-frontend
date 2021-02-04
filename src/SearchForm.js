@@ -26,12 +26,12 @@ function SearchForm({searchListings}){
 
   return(
     <Form inline onSubmit={handleSubmit} className="justify-content-center">
-        <InputGroup className="col-9 justify-content-center">
+        <InputGroup size="lg" className="col-9 justify-content-center">
           <Form.Label htmlFor="SearchForm-searchInput" srOnly>
             Search Term
           </Form.Label>
           <Form.Control
-            className="col-8"
+            className="col-8 rounded"
             id="SearchForm-searchInput"
             placeholder="Search..."
             value={searchTerm}

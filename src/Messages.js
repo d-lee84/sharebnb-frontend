@@ -13,7 +13,7 @@
  */
 function Messages(){
   return(
-    <div>
+    <div className="text-white">
       <h1> Messages! </h1>
       <p>Messages go here</p>
     </div>

@@ -50,7 +50,7 @@ function RegisterForm({ registerNewUser }) {
 
   return (
     <div className="w-50 mx-auto p-3">
-      <h2 className="m-3">Register!</h2>
+      <h2 className="m-3 text-white">Register!</h2>
 
       <Form onSubmit={handleSubmit}>
         <InputGroup size="lg" className="m-3">

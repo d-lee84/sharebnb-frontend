@@ -38,7 +38,7 @@ function Listings(){
 
   return(
     <div>
-      <h2 className="m-3">Book a covid-safe outdoor location!</h2>
+      <h2 className="m-3 text-white">Book a covid-safe outdoor location!</h2>
       <SearchForm searchListings={fetchListingsByTerm} />
       <div className="d-flex flex-wrap">
         {listings.map(l => (
