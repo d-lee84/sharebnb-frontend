@@ -98,6 +98,12 @@ class ShareBnBApi {
     return res.thread;
   }
 
+  /** Get messages for a specific thread */
+  static async getMessagesByThread(threadId) {
+    let res = await this.request(`messages/${threadId}`);
+    return res.messages;
+  }
+
   /** Get incoming threads for host user */
   static async getThreadsForHost(userId) {
     let res = await this.request(`threads/host/${userId}`);

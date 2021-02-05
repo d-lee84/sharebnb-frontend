@@ -7,6 +7,8 @@ import MessageThread from './MessageThread';
  * Props:
  * - isHost: Boolean; whether the current user is viewing
  *    the threads for which the user is a host.
+ * - currentUser: object containing information about the logged
+ *    in user. 
  * State:
  * - threads: array of thread objects
  *    [{id, listingId, hostId, guestId, startedAt, fromUsername}, ...]
@@ -27,7 +29,6 @@ function Messages({currentUser, isHost}){
     }
     getThreads();
   }, [isHost, currentUser.id]);
-
 
   return(
     <div className="text-white">
@@ -65,7 +66,11 @@ function Messages({currentUser, isHost}){
                       <MessageThread
                         id={thread.id}
                         key={`thread-${thread.id}`}
+                        currentUser={currentUser}
                         fromUsername={thread.fromUsername}
+                        toId={(currentUser.id !== thread.guestId) 
+                          ? thread.guestId 
+                          : thread.hostId}
                         listingId={thread.listingId}
                         startedAt={thread.startedAt} />
                     </Tab.Pane>))}
