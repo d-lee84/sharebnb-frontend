@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import {Jumbotron, Badge} from 'react-bootstrap';
-import {useParams} from 'react-router-dom';
+import {Jumbotron, Badge, Button} from 'react-bootstrap';
+import {useParams, Link} from 'react-router-dom';
 import ShareBnBApi from './apiHelper';
 import './ListingDetail.css'
 import NewMessageModal from "./NewMessageModal";
@@ -11,7 +11,7 @@ import NewMessageModal from "./NewMessageModal";
  *
  * App -> Listing
  */
-function ListingDetail(){
+function ListingDetail({currentUser}){
   const {id} = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [listing, setListing] = useState(null);
@@ -24,6 +24,18 @@ function ListingDetail(){
     }
     if (isLoading) getListing(id);
   });
+
+  async function sendAMessageToNewThread(content) {
+    let newThread = await ShareBnBApi.createAThread(
+      {
+        hostId: listing.host.id,
+        guestId: currentUser.id,
+        listingId: listing.id
+      }
+    );
+    // Make sure to send the message to the new thread
+
+  }
 
   if (isLoading) return(<Jumbotron>
                           <h1>Loading Listing Details...</h1>
@@ -43,7 +55,11 @@ function ListingDetail(){
           Description: {listing.description}
         </p>
 
-        <NewMessageModal listingName={listing.name} />
+        {currentUser 
+          ? <NewMessageModal listingName={listing.name} />
+          : <Button variant="warning" as={Link} to="/login">
+              Sign in to message host
+            </Button>}
 
       </Jumbotron>
     );

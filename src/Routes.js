@@ -31,7 +31,7 @@ function Routes({currentUser, loginUser, registerNewUser, addListing}){
         <AddListingForm addListing={addListing} />
       </Route>
       <Route exact path="/listings/:id">
-        <ListingDetail />
+        <ListingDetail currentUser={currentUser} />
       </Route>
       <Route exact path="/listings">
         <Listings />
