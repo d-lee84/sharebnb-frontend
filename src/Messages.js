@@ -1,13 +1,32 @@
 import {Tab, Row, Col, ListGroup} from 'react-bootstrap';
+import ShareBnBApi from './apiHelper';
 import MessageThread from './MessageThread';
 
 /**  Messages Component
  * Props:
+ * - isHost: Boolean; whether the current user is viewing
+ *    the threads for which the user is a host.
  * State:
- *
+ * - threads: array of thread objects
+ *    [{id, listingId, hostId, guestId, startedAt, fromUsername}, ...]
  * App -> Messages
  */
-function Messages({messages}){
+function Messages({isHost}){
+  const [threads, setThreads] = useState([]);
+
+  useEffect(function getThreadsOnRender() {
+    async function getThreads() {
+      let threads;
+      if(isHost) {
+        threads = await ShareBnBApi.getThreadsForHost();
+      } else {
+        threads = await ShareBnBApi.getThreadsForGuest();
+      }
+      setThreads(threads);
+    }
+    getThreads();
+  }, [isHost]);
+
 
   return(
     <div className="text-white">
