@@ -92,6 +92,11 @@ class ShareBnBApi {
     let res = await this.request(`threads`, data, "post");
     return res.thread;
   }
+  /** Create a new thread */
+  static async sendAMessage({ toId, fromId, content, threadId }) {
+    let res = await this.request(`messages`, { toId, fromId, content, threadId }, "post");
+    return res.thread;
+  }
 
   /** Get token for login from username, password. */
 

@@ -1,19 +1,29 @@
 import {useState} from "react";
 import {Button, Modal, Form,InputGroup, FormControl} from "react-bootstrap";
+import {useHistory} from "react-router-dom";
 
-function NewMessageModal({listingName}) {
+/** NewMessageModal
+ * Props:
+ * listingName: name of the listing this modal was called from
+ * sendMessage: function - sends a message
+ * App -> Listings -> ListingDetail -> NewMessageModal
+ */
+function NewMessageModal({listingName, sendMessage}) {
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   const [formData, setFormData] = useState({
     content: "",
   });
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const history = useHistory();
+
   async function handleSubmit(evt) {
     evt.preventDefault();
     // let result = await loginUser(formData);
+    await sendMessage(formData.content);
+    handleClose();
+    history.push("/listings");
   }
 
   /** Update form data field */
@@ -32,14 +42,14 @@ function NewMessageModal({listingName}) {
         <Modal.Header closeButton>
           <Modal.Title>Message the host of <i>{listingName}</i></Modal.Title>
         </Modal.Header>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Modal.Body>
             <InputGroup>
               <InputGroup.Prepend>
                 <InputGroup.Text>Message Content</InputGroup.Text>
               </InputGroup.Prepend>
-              <FormControl 
-                as="textarea" 
+              <FormControl
+                as="textarea"
                 aria-label="message textarea"
                 name="content"
                 rows={7}

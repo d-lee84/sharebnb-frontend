@@ -26,14 +26,19 @@ function ListingDetail({currentUser}){
   });
 
   async function sendAMessageToNewThread(content) {
-    let newThread = await ShareBnBApi.createAThread(
+    const newThread = await ShareBnBApi.createAThread(
       {
         hostId: listing.host.id,
         guestId: currentUser.id,
         listingId: listing.id
       }
     );
-    // Make sure to send the message to the new thread
+
+    await ShareBnBApi.sendAMessage(
+      { toId:listing.host.id,
+        fromId:currentUser.id,
+        threadId:newThread.id,
+        content });
 
   }
 
@@ -55,8 +60,8 @@ function ListingDetail({currentUser}){
           Description: {listing.description}
         </p>
 
-        {currentUser 
-          ? <NewMessageModal listingName={listing.name} />
+        {currentUser
+          ? <NewMessageModal sendMessage={sendAMessageToNewThread} listingName={listing.name} />
           : <Button variant="warning" as={Link} to="/login">
               Sign in to message host
             </Button>}
