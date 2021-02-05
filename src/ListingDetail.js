@@ -3,6 +3,7 @@ import {Jumbotron, Badge} from 'react-bootstrap';
 import {useParams} from 'react-router-dom';
 import ShareBnBApi from './apiHelper';
 import './ListingDetail.css'
+import NewMessageModal from "./NewMessageModal";
 
 /**  Listing Component
  * Props: name, description, price, zipcode, capacity, photoUrl
@@ -41,6 +42,9 @@ function ListingDetail(){
         <p>
           Description: {listing.description}
         </p>
+
+        <NewMessageModal listingName={listing.name} />
+
       </Jumbotron>
     );
 }
