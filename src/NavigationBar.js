@@ -15,11 +15,11 @@ function NavigationBar({currentUser}){
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link as={NavLink} to="/listings"> Listings </Nav.Link>
-          <Nav.Link as={NavLink} to="/messages/guest"> Booking Messages </Nav.Link>
-          <Nav.Link as={NavLink} to="/messages/host"> Hosting Messages </Nav.Link>
         </Nav>
         { currentUser
           ? <Nav className="ml-auto">
+              <Nav.Link as={NavLink} to="/messages/guest"> Booking Messages </Nav.Link>
+              <Nav.Link as={NavLink} to="/messages/host"> Hosting Messages </Nav.Link>
               <Nav.Link as={NavLink} to="/listings/add"> New Listing </Nav.Link>
             </Nav>
           : <Nav className="ml-auto">

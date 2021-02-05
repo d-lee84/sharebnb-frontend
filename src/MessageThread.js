@@ -1,4 +1,4 @@
-function MessageThread({from_user}){
-  return <div>Message Thread from: {from_user}</div>;
+function MessageThread({id, fromUsername, listingId, startedAt}){
+  return <div>Message Thread from: {fromUsername}</div>;
 }
 export default MessageThread;

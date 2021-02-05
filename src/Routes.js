@@ -40,10 +40,10 @@ function Routes({currentUser, loginUser, registerNewUser, addListing}){
         <Search />
       </Route>
       <Route exact path="/messages/guest">
-        <Messages isHost={false} />
+        <Messages isHost={false} currentUser={currentUser} />
       </Route>
       <Route exact path="/messages/host">
-        <Messages isHost={true} />
+        <Messages isHost={true} currentUser={currentUser} />
       </Route>
      <Route><NotFound/></Route>
     </Switch>

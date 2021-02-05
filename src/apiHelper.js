@@ -98,6 +98,18 @@ class ShareBnBApi {
     return res.thread;
   }
 
+  /** Get incoming threads for host user */
+  static async getThreadsForHost(userId) {
+    let res = await this.request(`threads/host/${userId}`);
+    return res.threads;
+  }
+
+  /** Get threads for guest user */
+  static async getThreadsForGuest(userId) {
+    let res = await this.request(`threads/guest/${userId}`);
+    return res.threads;
+  }
+
   /** Get token for login from username, password. */
 
   static async login(data) {

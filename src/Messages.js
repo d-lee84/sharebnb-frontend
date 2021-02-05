@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react';
 import {Tab, Row, Col, ListGroup} from 'react-bootstrap';
 import ShareBnBApi from './apiHelper';
 import MessageThread from './MessageThread';
@@ -9,23 +10,23 @@ import MessageThread from './MessageThread';
  * State:
  * - threads: array of thread objects
  *    [{id, listingId, hostId, guestId, startedAt, fromUsername}, ...]
- * App -> Messages
+ * App -> Routes -> Messages
  */
-function Messages({isHost}){
+function Messages({currentUser, isHost}){
   const [threads, setThreads] = useState([]);
 
   useEffect(function getThreadsOnRender() {
     async function getThreads() {
-      let threads;
+      let newThreads;
       if(isHost) {
-        threads = await ShareBnBApi.getThreadsForHost();
+        newThreads = await ShareBnBApi.getThreadsForHost(currentUser.id);
       } else {
-        threads = await ShareBnBApi.getThreadsForGuest();
+        newThreads = await ShareBnBApi.getThreadsForGuest(currentUser.id);
       }
-      setThreads(threads);
+      setThreads(newThreads);
     }
     getThreads();
-  }, [isHost]);
+  }, [isHost, currentUser.id]);
 
 
   return(
@@ -33,18 +34,20 @@ function Messages({isHost}){
       <h1> Messages! </h1>
       <Tab.Container id="Messages-list-group-tabs" defaultActiveKey="#directions">
       <Row>
-        <Col sm={2}>
+        <Col sm={3}>
           <ListGroup>
             {/* Map over all threads and display a link to the thread here  */}
             <ListGroup.Item action href="#directions">
               Directions
             </ListGroup.Item>
-            <ListGroup.Item action href="#link1">
-              Link 1
-            </ListGroup.Item>
-            <ListGroup.Item action href="#link2">
-              Link 2
-            </ListGroup.Item>
+           {threads.map( thread => (
+                  <ListGroup.Item
+                    action
+                    key={`listItem-${thread.id}`}
+                    href={`#${thread.id}`}>
+                    from: <b>{thread.fromUsername}</b> about listing: <i>{thread.listingId}</i>
+                  </ListGroup.Item>))}
+
           </ListGroup>
         </Col>
         <Col sm={8}>
@@ -52,13 +55,21 @@ function Messages({isHost}){
             {/* Map over all threads and display the thread here  */}
             <Tab.Pane eventKey="#directions">
               <h3>Use the navigation on the left to look at your messages</h3>
+              { isHost
+                ? <p>Viewing booking requests for your listing.</p>
+                : <p>Viewing your booking requests to hosts.</p>}
             </Tab.Pane>
-            <Tab.Pane eventKey="#link1">
-              <MessageThread from_user="david"/>
-            </Tab.Pane>
-            <Tab.Pane eventKey="#link2">
-              <MessageThread from_user="sterling"/>
-            </Tab.Pane>
+            {threads.map(thread => (
+                    <Tab.Pane key={`tab.pane-${thread.id}`}
+                              eventKey={`#${thread.id}`}>
+                      <MessageThread
+                        id={thread.id}
+                        key={`thread-${thread.id}`}
+                        fromUsername={thread.fromUsername}
+                        listingId={thread.listingId}
+                        startedAt={thread.startedAt} />
+                    </Tab.Pane>))}
+
           </Tab.Content>
         </Col>
       </Row>
