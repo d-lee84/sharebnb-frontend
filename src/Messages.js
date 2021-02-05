@@ -8,7 +8,7 @@ import MessageThread from './MessageThread';
  * - isHost: Boolean; whether the current user is viewing
  *    the threads for which the user is a host.
  * - currentUser: object containing information about the logged
- *    in user. 
+ *    in user.
  * State:
  * - threads: array of thread objects
  *    [{id, listingId, hostId, guestId, startedAt, fromUsername}, ...]
@@ -32,11 +32,11 @@ function Messages({currentUser, isHost}){
 
   return(
     <div className="text-white">
-      <h1> Messages! </h1>
       <Tab.Container id="Messages-list-group-tabs" defaultActiveKey="#directions">
       <Row>
         <Col sm={3}>
-          <ListGroup>
+          <h2>Threads:</h2>
+          <ListGroup className="ml-3">
             {/* Map over all threads and display a link to the thread here  */}
             <ListGroup.Item action href="#directions">
               Directions
@@ -46,7 +46,7 @@ function Messages({currentUser, isHost}){
                     action
                     key={`listItem-${thread.id}`}
                     href={`#${thread.id}`}>
-                    from: <b>{thread.fromUsername}</b> about listing: <i>{thread.listingId}</i>
+                    thread with: <b>{thread.fromUsername}</b> about listing: <i>{thread.listingId}</i>
                   </ListGroup.Item>))}
 
           </ListGroup>
@@ -68,8 +68,8 @@ function Messages({currentUser, isHost}){
                         key={`thread-${thread.id}`}
                         currentUser={currentUser}
                         fromUsername={thread.fromUsername}
-                        toId={(currentUser.id !== thread.guestId) 
-                          ? thread.guestId 
+                        toId={(currentUser.id !== thread.guestId)
+                          ? thread.guestId
                           : thread.hostId}
                         listingId={thread.listingId}
                         startedAt={thread.startedAt} />

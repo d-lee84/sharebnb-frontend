@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form,Button } from 'react-bootstrap';
+import { Form,Button,InputGroup } from 'react-bootstrap';
 import { useHistory } from "react-router-dom";
 
 /** Add Listing form.
@@ -67,93 +67,111 @@ function AddListingForm({ addListing }) {
 
 
   return (
-    <div className="w-50 mx-auto p-3">
+    <div className="w-50 mx-auto p-3 text-white">
       <h2>Add a Listing:</h2>
       <Form onSubmit={handleSubmit} encType="multipart/form-data">
-        <Form.Label htmlFor="AddListingForm-name">
-          Name:
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="AddListingForm-name"
-          name="name"
-          placeholder="name"
-          value={formData.name}
-          onChange={handleChange}
-          />
+      <InputGroup size="lg" className="m-3">
+        <InputGroup.Prepend>
+          <InputGroup.Text className="vw-50">
+            Name:
+          </InputGroup.Text>
+        </InputGroup.Prepend>
+          <Form.Control
+                id="AddListingForm-name"
+                name="name"
+                placeholder="name"
+                value={formData.name}
+                onChange={handleChange}/>
+      </InputGroup>
+      <InputGroup size="lg" className="m-3">
+        <InputGroup.Prepend>
+          <InputGroup.Text>
+            Price:
+          </InputGroup.Text>
+        </InputGroup.Prepend>
+          <Form.Control
+                id="AddListingForm-price"
+                placeholder="200"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                />
+      </InputGroup>
+        <InputGroup size="lg" className="m-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Zipcode:
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+            <Form.Control
+                  id="AddListingForm-zipcode"
+                  name="zipcode"
+                  placeholder="00000"
+                  value={formData.zipcode}
+                  onChange={handleChange}/>
+      </InputGroup>
+      <InputGroup size="lg" className="m-3">
+        <InputGroup.Prepend>
+          <InputGroup.Text>
+            Capacity:
+          </InputGroup.Text>
+        </InputGroup.Prepend>
+          <Form.Control
+                id="AddListingForm-capacity"
+                name="capacity"
+                placeholder="4"
+                value={formData.capacity}
+                onChange={handleChange}/>
+      </InputGroup>
+      <InputGroup size="lg" className="m-3">
+        <InputGroup.Prepend>
+          <InputGroup.Text>
+            Amenities:
+          </InputGroup.Text>
+        </InputGroup.Prepend>
+          <Form.Control
+                id="AddListingForm-amenities"
+                name="amenities"
+                placeholder="amenities"
+                value={formData.amenities}
+                onChange={handleChange}
+                />
+      </InputGroup>
 
-        <Form.Label htmlFor="AddListingForm-price">
-          Price: $
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="AddListingForm-price"
-          placeholder="200"
-          name="price"
-          value={formData.price}
-          onChange={handleChange}
-          />
+        <InputGroup size="lg" className="m-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Description:
+            </InputGroup.Text>
+          </InputGroup.Prepend>
+            <Form.Control
+                  as="textarea"
+                  id="AddListingForm-description"
+                  name="description"
+                  placeholder="description"
+                  value={formData.description}
+                  onChange={handleChange}/>
+        </InputGroup>
 
-        <Form.Label htmlFor="AddListingForm-zipcode">
-          Zipcode:
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="AddListingForm-zipcode"
-          name="zipcode"
-          placeholder="00000"
-          value={formData.zipcode}
-          onChange={handleChange}
-          />
-        <Form.Label htmlFor="AddListingForm-capacity">
-          Capacity:
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="AddListingForm-capacity"
-          name="capacity"
-          placeholder="4"
-          value={formData.capacity}
-          onChange={handleChange}
-          />
-
-        <Form.Label htmlFor="AddListingForm-amenities">
-          Amenities:
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="AddListingForm-amenities"
-          name="amenities"
-          placeholder="amenities"
-          value={formData.amenities}
-          onChange={handleChange}
-          />
-        <Form.Label htmlFor="AddListingForm-description">
-          Description:
-        </Form.Label>
-        <Form.Control
-          as="textarea"
-          className="mb-2 mr-sm-2"
-          id="AddListingForm-description"
-          name="description"
-          placeholder="description"
-          value={formData.description}
-          onChange={handleChange}
-          />
-        <Form.Label htmlFor="AddListingForm-photo">
-          photo:
-        </Form.Label>
-        <Form.Control
-          className="mb-2 mr-sm-2"
-          id="AddListingForm-photo"
-          name="photo"
-          type="file"
-          accept="image/*"
-          placeholder="photo"
-          value={formData.photo}
-          onChange={handleChange}
-          />
-        <Button type="submit" className="mb-2">
+        <InputGroup size="sm" className="m-3">
+          <InputGroup.Prepend>
+            <InputGroup.Text>
+              Photo:
+            </InputGroup.Text>
+            </InputGroup.Prepend>
+            <InputGroup.Append>
+            <Form.Control
+                  className="d-inline-block p-1"
+                  id="AddListingForm-photo"
+                  name="photo"
+                  type="file"
+                  accept="image/*"
+                  placeholder="photo"
+                  value={formData.photo}
+                  onChange={handleChange} />
+            </InputGroup.Append>
+        </InputGroup>
+        <Button type="submit" size="lg" className="">
           Submit
         </Button>
       </Form>

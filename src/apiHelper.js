@@ -92,10 +92,10 @@ class ShareBnBApi {
     let res = await this.request(`threads`, data, "post");
     return res.thread;
   }
-  /** Create a new thread */
+  /** Create a new message */
   static async sendAMessage({ toId, fromId, content, threadId }) {
     let res = await this.request(`messages`, { toId, fromId, content, threadId }, "post");
-    return res.thread;
+    return res.message;
   }
 
   /** Get messages for a specific thread */
